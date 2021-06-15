@@ -9,7 +9,7 @@ fi
 
 set -x
 docker images
-docker tag reslocal/${CONTAINER_NAME} reliableembeddedsystems/${CONTAINER_NAME}:$1
+docker tag reslocal/${CONTAINER_NAME}:$1 reliableembeddedsystems/${CONTAINER_NAME}:$1
 docker images
 docker login --username reliableembeddedsystems
 docker push reliableembeddedsystems/${CONTAINER_NAME}:$1
