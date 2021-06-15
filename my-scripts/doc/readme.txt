@@ -81,6 +81,25 @@ origin  git@github.com:RobertBerger/zephyr-build-container.git (push)
 git co master
 git co official-upstream/master
 git checkout -b 2021-06-14-ub20-v2.6.0
+
+$ git branch -a
+* 2021-06-14-ub20-v2.6.0
+  master
+  remotes/official-upstream/master
+  remotes/official-upstream/v0.13-branch
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+
+8.1) hack it
+
+8.2) add/commit
+
+git add .
+
+git commit
+
+8.3) push upstream
+
 git co master
 cd my-scripts
 ./push-all-to-github.sh
