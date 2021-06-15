@@ -11,8 +11,31 @@ RUN dpkg --add-architecture i386 && \
 	x11vnc \
 	xvfb \
 	xterm \
-	xz-utils && \
+	xz-utils \
+        indent \
+        cppcheck \
+        vim \
+        tree && \
 	rm -rf /var/lib/apt/lists/*
+
+# rber: added above:
+#       indent, cppcheck, vim, tree
+
+# --> rber
+RUN /usr/bin/python3 -m pip install --upgrade pip
+RUN /usr/bin/python3 -m pip install --upgrade pip
+RUN pip3 install -r https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/zephyr-v2.6.0/scripts/requirements.txt
+RUN /usr/bin/python3 -m pip install --upgrade pip
+RUN pip3 install -r https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/zephyr-v2.6.0/scripts/requirements.txt
+# <-- rber
+
+# --> rber
+# extra config files rber wants in sdk container
+COPY etc/skel/gitconfig /etc/skel/.gitconfig
+
+# key which is known to gitpod
+COPY etc/skel/ssh/.          /etc/skel/.ssh/
+# <-- rber
 
 ENV DISPLAY=:0
 ENV ZEPHYR_BASE=/workdir/zephyr
