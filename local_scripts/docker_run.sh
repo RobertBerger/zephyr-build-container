@@ -1,5 +1,4 @@
 source ../container-name.sh
-SDKDIR="/home/${USER}/projects/sdk"
 
 if [ $# -lt 1 ];
 then
