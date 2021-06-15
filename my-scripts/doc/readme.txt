@@ -31,6 +31,32 @@ git remote add official-upstream git://github.com/zephyrproject-rtos/docker-imag
 
 git fetch official-upstream
 
+warning: no common commits
+remote: Enumerating objects: 201, done.
+remote: Counting objects: 100% (70/70), done.
+remote: Compressing objects: 100% (52/52), done.
+remote: Total 201 (delta 31), reused 33 (delta 16), pack-reused 131
+Receiving objects: 100% (201/201), 39.40 KiB | 3.03 MiB/s, done.
+Resolving deltas: 100% (97/97), done.
+From git://github.com/zephyrproject-rtos/docker-image
+ * [new branch]      master       -> official-upstream/master
+ * [new branch]      v0.13-branch -> official-upstream/v0.13-branch
+ * [new tag]         v0.13.1      -> v0.13.1
+ * [new tag]         v0.17.3      -> v0.17.3
+ * [new tag]         v0.10        -> v0.10
+ * [new tag]         v0.11        -> v0.11
+ * [new tag]         v0.13        -> v0.13
+ * [new tag]         v0.14        -> v0.14
+ * [new tag]         v0.15        -> v0.15
+ * [new tag]         v0.16        -> v0.16
+ * [new tag]         v0.17.0      -> v0.17.0
+ * [new tag]         v0.17.0-rc1  -> v0.17.0-rc1
+ * [new tag]         v0.17.1      -> v0.17.1
+ * [new tag]         v0.17.2      -> v0.17.2
+ * [new tag]         v0.8         -> v0.8
+ * [new tag]         v0.9         -> v0.9
+
+
 git branch -a
 
 #5) use specific upstream branch/commit and make own branch
@@ -43,54 +69,45 @@ git branch -a
 git co master
 >> git remote -v
 
-official-upstream       git://git.yoctoproject.org/meta-virtualization (fetch)
-official-upstream       git://git.yoctoproject.org/meta-virtualization (push)
-origin  git@github.com:RobertBerger/meta-virtualization.git (fetch)
-origin  git@github.com:RobertBerger/meta-virtualization.git (push)
+official-upstream       git://github.com/zephyrproject-rtos/docker-image (fetch)
+official-upstream       git://github.com/zephyrproject-rtos/docker-image (push)
+origin  git@github.com:RobertBerger/zephyr-build-container.git (fetch)
+origin  git@github.com:RobertBerger/zephyr-build-container.git (push)
 
 >> git fetch official-upstream
-remote: Counting objects: 4043, done.
-remote: Compressing objects: 100% (1273/1273), done.
-remote: Total 4043 (delta 3130), reused 3632 (delta 2727)
-Receiving objects: 100% (4043/4043), 721.50 KiB | 402.00 KiB/s, done.
-Resolving deltas: 100% (3130/3130), completed with 502 local objects.
-From git://git.yoctoproject.org/meta-virtualization
-   62591d9..e758547  master     -> official-upstream/master
- + 2942327...a382678 master-next -> official-upstream/master-next  (forced update)
-   a3fa5ce..6a1f33c  morty      -> official-upstream/morty
 ---
 
 7) My own branch:
 git co master
-git co official-upstream/warrior
-git checkout -b 2019-09-09-warrior-2.7+
+git co official-upstream/master
+git checkout -b 2021-06-14-ub20-v2.6.0
 git co master
 cd my-scripts
 ./push-all-to-github.sh
 
-8) apply patches
-
-cd meta-virtualization
-
-git co 2019-09-09-warrior-2.7+ 
-
-stg init
-
-stg series
-
-stg import --mail ../meta-virtualization-patches/2019-09-09-warrior-2.7+/0001-use-systemd-as-cgroup-manager-for-docker-While-it-s-.patch
-
-import all patches
-
-...
-
-stg series 
-
-stg commit --all
-
-git log
-
-git co master
+#8) apply patches
+#
+#cd meta-virtualization
+#
+#git co 2019-09-09-warrior-2.7+
+#
+#stg init
+#
+#stg series
+#
+#stg import --mail ../meta-virtualization-patches/2019-09-09-warrior-2.7+/0001-use-systemd-as-cgroup-manager-for-docker-While-it-s-.patch
+#
+#import all patches
+#
+#...
+#
+#stg series
+#
+#stg commit --all
+#
+#git log
+#
+#git co master
 
 9) push to my upstream
 
